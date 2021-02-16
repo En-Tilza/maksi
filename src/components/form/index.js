@@ -29,9 +29,7 @@ const Form = () => {
     const func = (name, error) => {
         errors[name] = error;
 
-        const tempArr = {...errors};
-
-        setErrors(tempArr);
+        setErrors({...errors});
     }
 
     const checkForErrors = () => {
