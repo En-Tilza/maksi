@@ -1,0 +1,50 @@
+@import 'styles/theme.scss';
+
+body, button, input, textarea {
+    font-family: Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    &:hover, &:focus {
+        outline: none;
+    }
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+body, ul, ol, p, h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    &.opened {
+        overflow: hidden;
+    }
+}
+
+.main-color {
+    color: $main-color;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-login {
+    flex-grow: 1;
+    display: flex;
+    padding: 50px 0;
+    background-color: #102250;
+}
+

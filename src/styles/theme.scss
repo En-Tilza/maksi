@@ -1,0 +1,58 @@
+// Формула для адаптивных шрифтов. Например:
+// font-size: calcFluid(15, 18);
+// на разрешении 320 шрифт будет 15px, а на 1920 шритф будет 18px
+@function calcFluid($f-min, $f-max, $w-min: 320, $w-max: 1920) {
+	$k: ($f-max - $f-min)/($w-max - $w-min);
+	$b: $f-min - $k * $w-min;
+  
+	$b: $b * 1px;
+  
+	@return calc( #{$k} * 100vw + #{$b} );
+}
+
+@function calcFluidP($f-min, $f-max, $v-min: 320, $v-max: 1920, $percent: 100) {
+	$k: ($f-max - $f-min)/($v-max - $v-min);
+	$b: $f-min - $k * $v-min;
+
+	$b: $b * 1px;
+
+	$p: $percent * 1%;
+
+	@return calc( #{$p} + (#{$k} * 100vw + #{$b}) );
+}
+
+@function calcFluidM($f-min, $f-max, $v-min: 320, $v-max: 1920, $percent: 100) {
+	$k: ($f-max - $f-min)/($v-max - $v-min);
+	$b: $f-min - $k * $v-min;
+  
+	$b: $b * 1px;
+
+	$p: $percent * 1%;
+  
+	@return calc( #{$p} - (#{$k} * 100vw + #{$b}) );
+}
+
+
+@mixin font-26  {
+	font-size: calcFluid(18, 26);
+	line-height: calcFluid(22, 32);
+}
+
+@mixin font-18 {
+	font-size: calcFluid(14, 18);
+	line-height: calcFluid(18, 24);
+}
+
+@mixin font-16 {
+	font-size: calcFluid(14, 16);
+	line-height: calcFluid(18, 22);
+}
+
+@mixin font-12 {
+	font-size: calcFluid(11, 12);
+	line-height: calcFluid(13, 15);
+}
+
+
+$main-color: #65fcce;
+$border-color: #e6e6e6;

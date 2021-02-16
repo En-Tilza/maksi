@@ -1,0 +1,62 @@
+@import 'styles/theme';
+
+
+.custom-select {
+    position: relative;
+    width: 100%;
+    &.selected {
+		.custom-select-header__option {
+            color: #333;
+		}
+    }
+}
+
+.custom-select-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 45px;
+    width: 100%;
+    background-color: #f5f8fa;
+    border: transparent;
+    border-radius: 10px;
+    outline: none;
+    padding: 0 15px;
+    $this:&;
+	&__option {
+        @include font-16;
+        color: #a2a2a2;
+	}
+	&__svg {
+		margin-right: 5px;
+		fill: #333;
+	}
+}
+
+.custom-select-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+    padding: 5px 0;
+    transition: .2s;
+    opacity: 0;
+    visibility: hidden;
+    background-color: #fff;
+    width: 100%;
+    z-index: 1;
+	&.open {
+        transition: opacity .5s;
+		opacity: 1;
+		visibility: visible;
+    }
+    &__item {
+		@include font-16;
+        color: #333;
+        padding: 10px 15px;
+        display: block;
+        cursor: pointer;
+        &:hover {
+            background-color: #f5f8fa;
+        }
+    }
+}

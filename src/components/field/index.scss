@@ -1,0 +1,68 @@
+@import 'styles/theme.scss';
+
+.field {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 45px;
+    $this:&;
+    &__wrap {
+        position: absolute;
+        left: 20px;
+        top: 12px;
+        display: flex;
+        align-items: center;
+    }
+    &__icon {
+        width: 15px;
+        height: 15px;
+        display: block;
+        margin-right: 10px;
+    }
+    &__title {
+        @include font-16;
+        color: #a2a2a2;
+        position: relative;
+        top: 0;
+        transition: .15s;
+        cursor: text;
+        transform-origin: top left;
+    }
+    &__input {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 10px;
+        background-color: #f5f8fa;
+        padding: 0 20px 0;
+        @include font-16;
+        color: #333;
+    }
+    &__error {
+        position: absolute;
+        left: 20px;
+        top: 100%;
+        @include font-12;
+        color: red;
+        display: none;
+    }
+    &.active {
+        #{ $this }__title {
+            transform: scale(.8);
+            top: -10px;
+            transition: .3s;
+            opacity: 0;
+        }
+    }
+    &.error {
+        #{ $this }__error {
+            display: block;
+        }
+    }
+    &.has-icon {
+        #{ $this }__input {
+            padding-left: 45px;
+        }
+    }
+}

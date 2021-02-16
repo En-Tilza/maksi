@@ -1,0 +1,10 @@
+@import 'styles/theme.scss';
+
+.container {
+    max-width: calcFluid(1100, 1400);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+}
