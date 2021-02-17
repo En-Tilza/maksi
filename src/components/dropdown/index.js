@@ -32,13 +32,14 @@ const Dropdown = ({ values, name, title, func }) => {
     }
 
     return (
-        <div className="custom-select" ref={dropdownRef}>
+        <div className={open ? 'custom-select open' : 'custom-select'} ref={dropdownRef}>
             <input type="hidden" name={name} value={value}/>
             <button type="button" className="custom-select-header" onClick={handleClick}>
                 <span className="custom-select-header__option">{value}</span>
+                <img src="/images/arr.svg" className="custom-select-header__arr" />
             </button>
 
-            <div className={open ? 'custom-select-dropdown open' : 'custom-select-dropdown'}>
+            <div className="custom-select-dropdown">
                 {values.map((element, index) => (
                     <p className="custom-select-dropdown__item" key={index} onClick={() => {choose(name, element)}}>{element}</p>
                 ))}
