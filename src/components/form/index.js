@@ -13,6 +13,7 @@ import './index.scss';
 const Form = () => {
     const [ disabled, setDisabled ] = useState(false);
     const [ loading, setLoading ] = useState(false);
+    const [ resetFields, setResetFields ] = useState(false);
     const [ errors, setErrors ] = useState({
         name: false,
         email: false,
@@ -51,19 +52,35 @@ const Form = () => {
         setTimeout(() => setLoading(false), 10000)
     }
 
+    const clearForm = event => {
+        event.preventDefault();
+        
+
+        setErrors({
+            name: false,
+            email: false,
+            password: false,
+            country: false,
+            gender: false,
+            policies: false
+        });
+
+        setResetFields(true);
+    }
+
     return (
         <form action="/Authorization" className="login-template" onSubmit={handleSubmit}>
             <p className="login-template__title">Create a new account</p>
 
             <div className="login-template__wrap">
                 <div className="login-template__row">
-                    <Field name="name" type="text" title="Enter you name" errorText="Please enter a valid name" func={func} />
+                    <Field name="name" type="text" title="Enter you name" errorText="Please enter a valid name" func={func} resetFields={resetFields}/>
                 </div>
                 <div className="login-template__row">
-                    <Field name="email" type="email" title="Email" errorText="Please enter a valid email address" icon="/images/email.svg" func={func} />
+                    <Field name="email" type="email" title="Email" errorText="Please enter a valid email address" icon="/images/email.svg" func={func} resetFields={resetFields} />
                 </div>
                 <div className="login-template__row">
-                    <Field name="password" type="password" title="Password" errorText="Please must contain at least 6 symbols" icon="/images/password.svg" func={func} />
+                    <Field name="password" type="password" title="Password" errorText="Please must contain at least 6 symbols" icon="/images/password.svg" func={func} resetFields={resetFields} />
                 </div>
                 <div className="login-template__row">
                     <Dropdown values={['Vologda', 'Moscow', 'Saint Petersburg']} title={'Select country'} name="country" func={func}/>
@@ -86,6 +103,8 @@ const Form = () => {
                 : 'Sign up'}
                 
             </button>
+
+            <button type="button" className="form-reset" onClick={clearForm}>Reset</button>
         </form>
     )
 }
