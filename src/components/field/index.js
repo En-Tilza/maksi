@@ -1,15 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 
 import './index.scss';
 
 
 
-const Field = ({name, type, title, errorText, icon, func}) => {
-    const [ fieldActive, setFieldActive ] = useState(false);
-    const [ fieldError, setFieldError ] = useState(false);
+const Field = ({name, type, title, errorText, icon, func, resetFields}) => {
+    const [fieldActive, setFieldActive] = useState(false);
+    const [fieldError, setFieldError] = useState(false);
 
     const fieldInput = useRef(null);
+
+    useEffect(() => {
+        fieldInput.current.value = '';
+        setFieldActive(false);
+        setFieldError(false);
+    }, [resetFields]);
 
     const handleClick = () => {
         setFieldActive(true);
